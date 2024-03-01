@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/astronomy_pics/static/css/main.09929589.css",
+    "main.js": "/astronomy_pics/static/js/main.17b498b2.js",
+    "index.html": "/astronomy_pics/index.html",
+    "main.09929589.css.map": "/astronomy_pics/static/css/main.09929589.css.map",
+    "main.17b498b2.js.map": "/astronomy_pics/static/js/main.17b498b2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.09929589.css",
+    "static/js/main.17b498b2.js"
+  ]
+}
