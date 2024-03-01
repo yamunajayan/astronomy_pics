@@ -1,0 +1,97 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./style.css";
+
+// APP Defnition
+function App() {
+  const [data, setData] = useState({});
+  const [showForm, setShowForm] = useState(false);
+  const [buttonText, setButtonText] = useState("Click here");
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
+
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await fetch("http://127.0.0.1:5000/get_image_url");
+  //     const jsonData = await response.json();
+  //     setData(jsonData);
+  //   } catch (error) {
+  //     console.log("Error", error);
+  //   }
+  // };
+
+  const handleClick = () => {
+    setShowForm((prevShowForm) => !prevShowForm); // Updated to use functional update
+    setButtonText((prevButtonText) =>
+      prevButtonText ? "Click here" : "Close"
+    );
+  };
+
+  const handleFormSubmit = () => {
+    setShowForm(false);
+    setButtonText("Click here");
+  };
+
+  const appTitle =
+    "Discover today's stunning Astronomy picture with just a click!";
+
+  return (
+    <div className="container">
+      <header className="header">
+        <div className="title">
+          {/* <img src="astronomy_pic.png" alt="Astronomy logo" /> */}
+          <h1 className="heading">{appTitle}</h1>
+        </div>
+        {/* <h3>{data.img_url}</h3> */}
+        <button className="btn btn-large" onClick={handleClick}>
+          {buttonText}
+        </button>
+        {/* {data.img_url && (
+          <img src={data.img_url} alt="Astronomy Picture of the Day" />
+        )}{" "} */}
+      </header>
+
+      {/* Display the form only if showForm is true */}
+      {showForm && <AstronomyPictureForm onSubmit={handleFormSubmit} />}
+    </div>
+  );
+}
+
+function AstronomyPictureForm({ onSubmit }) {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSubmit();
+    alert("Form submitted!");
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="form">
+      <label htmlFor="start_date">Start Date:</label>
+      <br />
+      <input
+        type="text"
+        id="start_date"
+        name="start_date"
+        placeholder="YYYY-MM-DD"
+      />
+      <br />
+      <label htmlFor="end_date">End Date:</label>
+      <br />
+      <input
+        type="text"
+        id="end_date"
+        name="end_date"
+        placeholder="YYYY-MM-DD"
+      />
+      <br />
+      <button type="submit" className="btn btn-medium">
+        Submit
+      </button>
+    </form>
+  );
+}
+
+export default App;
